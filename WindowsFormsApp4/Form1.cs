@@ -28,26 +28,26 @@ namespace WindowsFormsApp4
             {
                 if (Name == p.Name || Code == p.Code)
                 {
-                    MessageBox.Show("El producto o código del producto ya están registrados","Alerta", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("El producto o código del producto ya están registrados", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
             }
-            Product product = new Product(Name, Code, amount);
-            products.Add(product);
+
+            Product.Productos.Add(new Product{Name = textBox1.Text, Code = textBox2.Text, Price = double.Parse(textBox3.Text)});
 
             MessageBox.Show("Producto guardado correctamente", "Nuevo mensaje");
-            listBox1.Items.Add(product);
+            listBox1.DataSource = null;
+            listBox1.DataSource = Product.Productos;
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
-            f2.ListaExterna = products; 
+            
             f2.Show();
             this.Hide();
 
@@ -60,7 +60,8 @@ namespace WindowsFormsApp4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            listBox1.DataSource = null;
+            listBox1.DataSource = Product.Productos;
         }
 
         private void label4_Click(object sender, EventArgs e)

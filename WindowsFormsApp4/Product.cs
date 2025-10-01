@@ -32,5 +32,6 @@ namespace WindowsFormsApp4
         {
             return $"{Name}, {Code}, Precio: {Price}";
         }
+        public static List<Product> Productos { get; set; } = new List<Product>();
     }
 }

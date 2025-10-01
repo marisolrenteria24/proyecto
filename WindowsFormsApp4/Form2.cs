@@ -12,7 +12,7 @@ namespace WindowsFormsApp4
 {
     public partial class Form2 : Form
     {
-        public List<Product> ListaExterna { get; set; }
+      
         public Form2()
         {
             InitializeComponent();
@@ -32,23 +32,25 @@ namespace WindowsFormsApp4
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            foreach(Product p in ListaExterna)
-            {
-                listBox1.DataSource = (ListaExterna);
-            }
+         
+                listBox1.DataSource = Product.Productos;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Product p in ListaExterna)
+          
+            bool existe = Product.Productos.Any(p => p.Name == textBox1.Text);
+            if (!existe)
             {
-                if (textBox1.Text != p.Name)
-                {
-                    MessageBox.Show("El producto no está registrado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
+                MessageBox.Show("El producto no está registrado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            else
+            {
+                MessageBox.Show("Compra realizada");
+            }
+
         }
     }
 }
