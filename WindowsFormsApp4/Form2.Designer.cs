@@ -108,8 +108,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(113, 23);
             this.button3.TabIndex = 8;
-            this.button3.Text = "Terminar día:";
+            this.button3.Text = "Terminar día";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox1
             // 
