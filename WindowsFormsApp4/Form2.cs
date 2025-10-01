@@ -71,9 +71,10 @@ namespace WindowsFormsApp4
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int vendido = 0; 
+            int vendido = 0;
+            int menos = 100000;
             Product masvendido = null; // se declara un objeto nulo para poder darle valor más adelante
-
+            Product menosvendido = null;
             foreach (Product p in Product.Productos) 
             {
                 if(p.Sold > vendido) // condicion para sacar el producto más vendido
@@ -81,9 +82,13 @@ namespace WindowsFormsApp4
                     vendido = p.Sold; //ahora este objeto es el más vendido de la lista
                     masvendido = p; //se asigna el objeto más vendido al objeto que previamente declaramos para poder acceder más facil a ese
                 }
-
+                if(p.Sold < menos)//condicion para sacar el objeto menos vendido
+                {
+                    menos = p.Sold; 
+                    menosvendido = p;
+                }
             }
-            MessageBox.Show($"Venta total del día: {Product.total_glb}\n\nEl producto más vendido es: {masvendido.Name}", "Corte",MessageBoxButtons.OK); 
+            MessageBox.Show($"Venta total del día: {Product.total_glb}\n\nEl producto más vendido es: {masvendido.Name}\n El producto menos vendido es: {menosvendido.Name}", "Corte",MessageBoxButtons.OK); 
         }
     }
 }
